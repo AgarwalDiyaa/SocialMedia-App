@@ -1,14 +1,30 @@
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import React from 'react'
+// Navigation
+import { NavigationContainer } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// Screens
 import MyFeed from './src/screens/MyFeed.tsx'
+import Notifications from './src/screens/Notifications.tsx';
+import Chat from './src/screens/Chat.tsx';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <NavigationContainer>
 
-    <MyFeed />
+      <Stack.Navigator initialRouteName='MyFeed'   
+      
+      >
 
-    </SafeAreaView>
+      <Stack.Screen name="MyFeed" component={MyFeed} options={{ headerShown: false }}/>
+      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Chat" component={Chat} />
+
+      </Stack.Navigator>
+
+    </NavigationContainer>
   )
 }
 

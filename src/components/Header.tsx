@@ -1,7 +1,17 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native'
 import React from 'react'
+import Icons from 'react-native-vector-icons/FontAwesome5'
+import Icons2 from 'react-native-vector-icons/Fontisto'
 
-export default function Header() {
+// Navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import Notifications from '../screens/Notifications'
+import Chat from '../screens/Chat'
+
+
+
+
+export default function Header({navigation}: any) {
   return (
  <SafeAreaView style={styles.Header}>
     <View style={styles.rowIcons}>
@@ -15,13 +25,12 @@ export default function Header() {
 
         {/* Notifications (like) and Messenger icon at right */}
         <View style={styles.rightIcons}>
-        <Image 
-                style = {styles.notifRight}
-                source = {require('../assets/like.png')}
+            <Icons name='heart' color='#ffffff' size={35} style ={styles.notifRight} 
+            onPress={() => navigation.navigate('Notifications')}
             />
-         <Image 
-                style = {styles.messageRight}
-                source = {require('../assets/messenger.png')}
+         
+            <Icons2 name='messenger' color='#ffffff' size={35} style={styles.messageRight} 
+            onPress={() => navigation.navigate('Chat')}
             />
         </View>
     </View>
@@ -52,13 +61,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     notifRight: {
-        height:40,
-        width:40,
+    
         marginRight: 20,
     },
     messageRight: {
-        height:40,
-        width:40,
+       
         marginRight: 20,
     }
 })

@@ -3,10 +3,18 @@ import React from 'react'
 
 export default function Stories() {
   return (
-    <View>
+    <View style = {styles.storyContainer}>
       <Text>Stories</Text>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  storyContainer: {
+    height: 80,
+    color: '000000',
+    borderStyle: 'solid',
+    borderColor: '#000000',
+    borderWidth: 3
+  }
+})

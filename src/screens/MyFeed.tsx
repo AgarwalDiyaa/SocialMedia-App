@@ -5,18 +5,21 @@ import Footer from '../components/Footer'
 import Stories from '../components/Stories'
 import Feed from '../components/Feed'
 
-export default function MyFeed() {
-  return (
-    <ScrollView>
-    <View>
-      
-      <Header />
-      <Stories />
-      <Feed />
-      <Footer />
 
+
+export default function MyFeed({navigation}: any) {
+  return (
+    <View>
+     
+        <ScrollView>
+        <View>
+        <Header navigation={navigation}/>
+          <Stories />
+          <Feed />
+        </View>
+        </ScrollView>
+      {/* <Footer /> */}
     </View>
-    </ScrollView>
   )
 }
 

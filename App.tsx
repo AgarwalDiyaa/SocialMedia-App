@@ -8,6 +8,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MyFeed from './src/screens/MyFeed.tsx'
 import Notifications from './src/screens/Notifications.tsx';
 import Chat from './src/screens/Chat.tsx';
+import Comment from './src/screens/Comment.tsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => {
       <Stack.Screen name="MyFeed" component={MyFeed} options={{ headerShown: false }}/>
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Comment" component={Comment} />
 
       </Stack.Navigator>
 

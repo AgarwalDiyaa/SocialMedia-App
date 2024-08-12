@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, Dimensions, FlatList, TouchableOpacity, Share, Alert } from 'react-native'
 import React, {useState} from 'react'
+
 import ImageReactNative from '../assets/reactNative.png'
 import ImageUserName from '../assets/black.png'
 import Icons from 'react-native-vector-icons/FontAwesome5'
@@ -7,7 +8,7 @@ import Icons2 from 'react-native-vector-icons/Feather'
 import Icons3 from 'react-native-vector-icons/FontAwesome'
 
 
-export default function Feed() {
+export default function Feed({navigation}: any) {
   const ScreenWidth = Dimensions.get('window').width;
   // const { width: ScreenWidth } = useWindowDimensions();
   const list = [
@@ -87,7 +88,8 @@ export default function Feed() {
                       style={liked ? styles.like : styles.likeClicked}
                       />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity 
+                      onPress={() => navigation.navigate('Comment')}>
                      <Icons name='comment' size={31}
                       style={styles.comment}
                       />

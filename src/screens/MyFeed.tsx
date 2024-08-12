@@ -13,9 +13,9 @@ export default function MyFeed({navigation}: any) {
      
         <ScrollView>
         <View>
-        <Header navigation={navigation}/>
+          <Header navigation={navigation}/>
           <Stories />
-          <Feed />
+          <Feed navigation={navigation}/>
         </View>
         </ScrollView>
       {/* <Footer /> */}

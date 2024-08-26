@@ -12,20 +12,7 @@
           "package_name": "com.psma"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "761125920708-b17lckhmt9ts82k3ccut9e8k64r0tgsj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.psma",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "761125920708-5o2adko67rk4aaeq3sllqj28reubar1i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyA18_2ZH1M-6xTU-oicZ3NIEioUw08TXZU"
@@ -33,19 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "761125920708-5o2adko67rk4aaeq3sllqj28reubar1i.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "761125920708-gcv3cipg8kcep98nrotvh7v6nngn691r.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "org.reactjs.native.example.PSMA"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

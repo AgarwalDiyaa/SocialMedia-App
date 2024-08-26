@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761125920708",
+    "project_id": "psma-c5e85",
+    "storage_bucket": "psma-c5e85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761125920708:android:087de92356ed754ad4ce91",
+        "android_client_info": {
+          "package_name": "com.psma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA18_2ZH1M-6xTU-oicZ3NIEioUw08TXZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

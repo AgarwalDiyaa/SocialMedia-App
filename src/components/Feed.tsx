@@ -52,7 +52,7 @@ export default function Feed({navigation}: any) {
       {/* Username and user profile picture */}
         <View style = {styles.User}>
           <Image 
-            source = {ImageUserName}
+            source = {require('../assets/EvolveLogo.png')}
             style = {styles.UserImage}
           />
           <Text style = {styles.UserName}>Evolve</Text>

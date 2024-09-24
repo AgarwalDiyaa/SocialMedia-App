@@ -14,6 +14,7 @@ import Comment from './src/screens/Comment.tsx';
 import Explore from './src/screens/Explore.tsx';
 import Profile from './src/screens/Profile.tsx';
 import Upload from './src/screens/Upload.tsx';
+import Login from "./src/screens/login";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,6 +35,16 @@ const HomeFeed = () => {
 };
 
 const App = () => {
+  const [user, setUser] = React.useState(null);
+  if (!user) {
+    return (
+      <SafeAreaView>
+        <View>
+          <Login setUser={setUser} />
+        </View>
+      </SafeAreaView>
+    );
+  }
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{}}>

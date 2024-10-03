@@ -84,14 +84,16 @@ const App = () => {
         />
         <Tab.Screen
           name="Profile"
-          component={Profile}
+          // component={Profile}
           options={{
             tabBarLabelStyle: {display: 'none'},
             tabBarIcon: ({color, size}) => (
               <Icon name="user" color={color} size={size} />
             ),
           }}
-        />
+        >
+          {() => <Profile setUser={setUser} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

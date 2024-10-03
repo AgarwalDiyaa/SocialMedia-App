@@ -1,20 +1,35 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button, Alert, StyleSheet, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+  SafeAreaView,
+  ActivityIndicator,
+} from 'react-native';
+import {styles} from '../../styles';
 import auth from '@react-native-firebase/auth';
 
 const LoginScreen = ({setUser}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
+    setLoading(true);
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(payload => {
         console.log('User signed in!');
+        console.log(JSON.stringify(payload));
+        setLoading(false);
         Alert.alert('Success', 'User signed in!');
-        setUser(email);
+        setUser(payload);
       })
       .catch(error => {
+        setLoading(false);
         if (error.code === 'auth/email-already-in-use') {
           Alert.alert('Error', 'That email address is already in use!');
         }
@@ -33,63 +48,31 @@ const LoginScreen = ({setUser}: any) => {
 
   return (
     <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
+      <View style={styles.center}>
+        <Text>PSMA Log in</Text>
         <TextInput
           style={styles.input}
-          placeholder="Email"
-          value={email}
           onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
+          value={email}
+          placeholder="Email"
         />
         <TextInput
           style={styles.input}
-          placeholder="Password"
-          value={password}
           onChangeText={setPassword}
-          secureTextEntry
-          autoCapitalize="none"
+          value={password}
+          placeholder="Password"
+          secureTextEntry={true}
         />
+        <TouchableOpacity onPress={handleLogin} style={styles.loginButton} disabled={loading}>
+          {loading ? (
+            <ActivityIndicator size="large" color="white" />
+          ) : (
+            <Text style={styles.loginText}>Log in</Text>
+          )}
+        </TouchableOpacity>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          onPress={handleLogin}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center', // Center vertically
-    alignItems: 'center', // Center horizontally
-    padding: 16,
-    marginTop: 100,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-  input: {
-    width: '80%', // Make input fields responsive
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 10,
-    borderRadius: 5, // Optional: add some rounding to the input fields
-  },
-  buttonContainer: {
-    width: '80%', // Make button take up similar space as input fields
-    marginTop: 20,
-  },
-});
 
 export default LoginScreen;

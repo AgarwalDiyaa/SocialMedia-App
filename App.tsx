@@ -18,6 +18,7 @@ import Login from "./src/screens/login";
 import analytics from '@react-native-firebase/analytics';
 import firebase from '@react-native-firebase/app';
 
+import Images from "./src/screens/list images";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -30,7 +31,7 @@ const HomeFeed = () => {
         component={MyFeed}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Notifications" component={Images} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="Comment" component={Comment} />
     </Stack.Navigator>

@@ -14,6 +14,11 @@ import Comment from './src/screens/Comment.tsx';
 import Explore from './src/screens/Explore.tsx';
 import Profile from './src/screens/Profile.tsx';
 import Upload from './src/screens/Upload.tsx';
+import Login from "./src/screens/login";
+import analytics from '@react-native-firebase/analytics';
+import firebase from '@react-native-firebase/app';
+
+import Images from "./src/screens/list images";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,7 +31,7 @@ const HomeFeed = () => {
         component={MyFeed}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Notifications" component={Images} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="Comment" component={Comment} />
     </Stack.Navigator>
@@ -34,6 +39,16 @@ const HomeFeed = () => {
 };
 
 const App = () => {
+  const [user, setUser] = React.useState(null);
+  if (!user) {
+    return (
+      <SafeAreaView>
+        <View>
+          <Login setUser={setUser} />
+        </View>
+      </SafeAreaView>
+    );
+  }
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{}}>
@@ -70,14 +85,16 @@ const App = () => {
         />
         <Tab.Screen
           name="Profile"
-          component={Profile}
+          // component={Profile}
           options={{
             tabBarLabelStyle: {display: 'none'},
             tabBarIcon: ({color, size}) => (
               <Icon name="user" color={color} size={size} />
             ),
           }}
-        />
+        >
+          {() => <Profile setUser={setUser} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

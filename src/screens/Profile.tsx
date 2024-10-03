@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
+import auth from '@react-native-firebase/auth';
+// import { styles } from '../styles';
 import React from 'react';
 
 
@@ -8,7 +10,7 @@ const posts = [
   { id: '3', image: require('../assets/mindfullness.png') },
 ];
 
-const Profile = () => {
+const Profile = ({setUser}: any) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>

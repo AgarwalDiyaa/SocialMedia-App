@@ -6,6 +6,7 @@ import ImageUserName from '../assets/black.png'
 import Icons from 'react-native-vector-icons/FontAwesome5'
 import Icons2 from 'react-native-vector-icons/Feather'
 import Icons3 from 'react-native-vector-icons/FontAwesome'
+import analytics from '@react-native-firebase/analytics'
 
 
 export default function Feed({navigation}: any) {
@@ -45,6 +46,7 @@ export default function Feed({navigation}: any) {
       Alert.alert(error.message);
     }
   };
+
  
   return (
     <View>
@@ -94,7 +96,17 @@ export default function Feed({navigation}: any) {
                       style={styles.comment}
                       />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={onShare}>
+                  <TouchableOpacity onPress={async () => {
+    // Call the existing onShare function
+    onShare();
+
+    // Log a custom event to Firebase Analytics
+    await analytics().logEvent('share_button_pressed', {
+      content_type: 'button',
+      action: 'shared',
+      button_name: 'send',
+    });
+  }}>
                       <Icons2 name='send' size={31}
                       style={styles.share}
                       />

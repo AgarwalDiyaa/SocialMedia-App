@@ -15,6 +15,9 @@ import Explore from './src/screens/Explore.tsx';
 import Profile from './src/screens/Profile.tsx';
 import Upload from './src/screens/Upload.tsx';
 import Login from "./src/screens/login";
+import analytics from '@react-native-firebase/analytics';
+import firebase from '@react-native-firebase/app';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

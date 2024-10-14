@@ -22,8 +22,6 @@ const LoginScreen = ({setUser}: any) => {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(payload => {
-        console.log('User signed in!');
-        console.log(JSON.stringify(payload));
         setLoading(false);
         Alert.alert('Success', 'User signed in!');
         setUser(payload);

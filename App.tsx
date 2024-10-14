@@ -75,14 +75,16 @@ const App = () => {
         />
         <Tab.Screen
           name="Upload"
-          component={Upload}
+          // component={Upload}
           options={{
             tabBarLabelStyle: {display: 'none'},
             tabBarIcon: ({color, size}) => (
               <Icon name="plus" color={color} size={size} />
             ),
           }}
-        />
+        >
+          {() => <Upload user={user} />}
+        </Tab.Screen>
         <Tab.Screen
           name="Profile"
           // component={Profile}

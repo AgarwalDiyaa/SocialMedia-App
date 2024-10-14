@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Button, Image, StyleSheet, Text, Alert } from 'react-native';
+import { View, Button, Image, StyleSheet, Text, Alert, TextInput } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 
-const Upload = () => {
+const Upload = ({user}: any) => {
   const [imageUri, setImageUri] = useState<string | null>(null); 
+  const [caption, setCaption] = useState<string>('');
 
 
   const pickImage = () => {
@@ -33,7 +34,7 @@ const Upload = () => {
     }
 
     const fileName = imageUri.substring(imageUri.lastIndexOf('/') + 1);
-    const reference = storage().ref(fileName);
+    const reference = storage().ref(`${user?.user?.uid}/uploads/${fileName}`);
 
     const task = reference.putFile(imageUri);
 
@@ -55,8 +56,30 @@ const Upload = () => {
   return (
     <View style={styles.container}>
       {imageUri ? <Image source={{ uri: imageUri }} style={styles.image} /> : <Text>No Image Selected</Text>}
-      <Button title="Pick Image" onPress={pickImage} />
+      {/* <View>
+        {
+          imageUri ? (
+            < TextInput
+              style={styles.input}
+              placeholder="Caption"
+              onChangeText={setCaption}
+              value={caption}
+            />
+          ) : (
+            null
+          )
+        }
+      </View> */}
+      <View>
+      {
+        imageUri ? (
+          <Button title="Clear Image" onPress={() => setImageUri(null)} />
+        ) : (
+          <Button title="Pick Image" onPress={pickImage} />
+        )
+      }
       <Button title="Upload Image" onPress={uploadImage} />
+      </View>
     </View>
   );
 };
@@ -64,6 +87,7 @@ const Upload = () => {
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   image: { width: 200, height: 200, marginBottom: 20 },
+  input: { width: 200, height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, padding: 10, borderRadius: 5 },
 });
 
 export default Upload;

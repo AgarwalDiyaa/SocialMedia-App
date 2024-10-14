@@ -10,7 +10,7 @@ const FirebaseImageList = () => {
     const listImages = async () => {
       try {
         // Reference to the folder (or root) in your Firebase Storage
-        const storageRef = storage().ref("/"); // You can change 'images/' to any folder or leave it empty for root
+        const storageRef = storage().ref("/test_images/");
 
         // List all items (files) and folders
         const result = await storageRef.listAll();
